@@ -22,6 +22,7 @@ public User(int id, String name, String password, String sex, String descri) {
 public User() {
 	super();
 }
+
 public int getId() {
 	return id;
 }

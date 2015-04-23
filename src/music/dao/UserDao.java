@@ -26,5 +26,10 @@ public class UserDao {
 		query.setParameter(2,userPassword);  
 		return (List<User>) query.getResultList();
 	}
+	
+	public User findUserById(int id)
+	{
+		return em.find(User.class, id);
+	}
 
 }
