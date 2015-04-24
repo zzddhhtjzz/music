@@ -5,6 +5,7 @@
 	<persistence-unit name="music">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>music.model.User</class>
+		<class>music.model.Playlist</class>
 		<properties>
 			<property name="eclipselink.jdbc.password" value="889966" />
 			<property name="eclipselink.jdbc.user" value="root" />

@@ -46,7 +46,7 @@ public class seruserlogin extends HttpServlet {
         		message=u.getId()+"";
         	}
         	 request.setAttribute("message", message);
-            request.getRequestDispatcher("/hello.jsp").forward(request,
+            request.getRequestDispatcher("/loginsuccess.jsp").forward(request,
                     response);
         }
 

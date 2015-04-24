@@ -1,8 +1,10 @@
 package music.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
 @Entity
 public class User {
 	@Id
@@ -11,18 +13,18 @@ private String username;
 private String password;
 private String sex;
 private String description;
-public User(int id, String name, String password, String sex, String descri) {
-	super();
-	this.id = id;
-	this.username = name;
-	this.password = password;
-	this.sex = sex;
-	this.description = descri;
-}
-public User() {
-	super();
-}
+@OneToMany(mappedBy="user")
+private List<Playlist> Playlists;
 
+public List<Playlist> getPlaylists() {
+	return Playlists;
+}
+public void setPlaylists(List<Playlist> playlists) {
+	Playlists = playlists;
+}
+public String getUsername() {
+	return username;
+}
 public int getId() {
 	return id;
 }
@@ -52,5 +54,19 @@ public String getDescription() {
 }
 public void setDescription(String descri) {
 	this.description = descri;
+}
+
+public User(int id, String username, String password, String sex,
+		String description, List<Playlist> playlists) {
+	super();
+	this.id = id;
+	this.username = username;
+	this.password = password;
+	this.sex = sex;
+	this.description = description;
+	this.Playlists = playlists;
+}
+public User() {
+	super();
 }
 }

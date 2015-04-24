@@ -3,21 +3,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<% String message = (String)(request.getAttribute("message")); %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>welcome</title>
+<title>sucessful</title>
 </head>
 <body>
-hello!
-<%
-
-String idStr = request.getParameter("id");
-Integer id = Integer.parseInt(idStr);
-UserDao dao=new UserDao();
+create sucessfully!
+<%UserDao dao=new UserDao();
+int id=Integer.parseInt(message);
 User user=dao.findUserById(id);
 out.println(user.getName());
 %>
-<a href="Profiledetails.jsp?id=<%= user.getId() %>">nnu my profile</a>  
-<a href="playlist.jsp?idd=<%= user.getId() %>">nnu my playlist</a> 
-<a href="userlogin.jsp">log out</a>      
+<a href="hello.jsp?id=<%= user.getId() %>">confirm</a>  
+  
 </body>
 </html>

@@ -31,5 +31,6 @@ User user=dao.findUserById(id);
 		</table>
 		</form>
 	</div>
+	<a href="hello.jsp?id=<%= user.getId() %>" >return</a>   
 </body>
 </html>
