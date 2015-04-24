@@ -41,7 +41,7 @@ public class seruserregister extends HttpServlet {
 
         user.setSex(userSex);
         user.setDescription(userDescribe);
-    
+        user.setType("user");
         UserDao userDao = new UserDao();
 
         userDao.insertUser(user);

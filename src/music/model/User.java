@@ -13,6 +13,7 @@ private String username;
 private String password;
 private String sex;
 private String description;
+private String type; 
 @OneToMany(mappedBy="user")
 private List<Playlist> Playlists;
 
@@ -56,8 +57,14 @@ public void setDescription(String descri) {
 	this.description = descri;
 }
 
+public String getType() {
+	return type;
+}
+public void setType(String type) {
+	this.type = type;
+}
 public User(int id, String username, String password, String sex,
-		String description, List<Playlist> playlists) {
+		String description,String type ,List<Playlist> playlists) {
 	super();
 	this.id = id;
 	this.username = username;
@@ -65,8 +72,11 @@ public User(int id, String username, String password, String sex,
 	this.sex = sex;
 	this.description = description;
 	this.Playlists = playlists;
+	this.type=type;
 }
 public User() {
 	super();
 }
+
+
 }

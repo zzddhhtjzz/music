@@ -14,10 +14,14 @@ String idStr = request.getParameter("id");
 Integer id = Integer.parseInt(idStr);
 UserDao dao=new UserDao();
 User user=dao.findUserById(id);
+String type=user.getType();
 out.println(user.getName());
 %>
-<a href="Profiledetails.jsp?id=<%= user.getId() %>">nnu my profile</a>  
-<a href="playlist.jsp?idd=<%= user.getId() %>">nnu my playlist</a> 
+<a href="Profiledetails.jsp?id=<%= user.getId() %>">my profile</a>  
+<a href="playlist.jsp">my playlist</a> 
+<%if("admin".equals(type)) %>
+<a href="manage.jsp">manage users</a> 
+<%; %>
 <a href="userlogin.jsp">log out</a>      
 </body>
 </html>
