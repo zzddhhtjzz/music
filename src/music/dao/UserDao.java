@@ -1,5 +1,6 @@
 package music.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,7 +16,6 @@ public class UserDao {
 	EntityManager em = fplaylisty.createEntityManager();
 	
 	public void insertUser(User user) {
-        // 用户注册方法
 		em.getTransaction().begin();
 		em.persist(user);
 		em.getTransaction().commit();
@@ -26,6 +26,19 @@ public class UserDao {
 		query.setParameter(1,userName);  
 		query.setParameter(2,userPassword);  
 		return (List<User>) query.getResultList();
+	}
+	
+	public void updateUser(int userId, User user) {
+		List<User> users = new ArrayList<User>();
+		em.getTransaction().begin();
+		
+		user.setId(userId);
+		em.merge(user);
+
+		em.getTransaction().commit();
+		
+		
+		
 	}
 	
 	public void addPlaylist(Integer userId, Playlist playlist)
@@ -42,5 +55,29 @@ public class UserDao {
 	{
 		return em.find(User.class, id);
 	}
+	
+	public List<User> removeUser(int userId){
+		List<User> users = new ArrayList<User>();
+		User user = null;
 
+		em.getTransaction().begin();
+		
+		user = em.find(User.class, userId);
+		em.remove(user);
+		
+		Query query = em.createQuery("select user from User user");
+		users = (List<User>) query.getResultList();
+		
+		em.getTransaction().commit();
+		
+		return users;
+	}
+	public List<User> findAllUsers() {
+		List<User> users = new ArrayList<User>();
+		Query query = em.createQuery("select user from User user");
+		users = (List<User>) query.getResultList();
+
+		return users;
+	}
+	
 }

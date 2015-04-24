@@ -34,6 +34,7 @@ public class seruserlogin extends HttpServlet {
         String userPassword = request.getParameter("userPassword");
         UserDao userDao = new UserDao();
         List<User> user = userDao.judgeUserPassword(userName, userPassword);
+        int uid=1;
         String message = "ERROR~£¡";
         if (user.size()<1) {
      
@@ -43,9 +44,10 @@ public class seruserlogin extends HttpServlet {
         } else {
         	for (User u :user)
         	{
-        		message=u.getId()+"";
+        		uid=u.getId();
         	}
-        	 request.setAttribute("message", message);
+        	
+        	 request.setAttribute("message",uid+"");
             request.getRequestDispatcher("/loginsuccess.jsp").forward(request,
                     response);
         }
